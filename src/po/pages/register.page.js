@@ -1,8 +1,13 @@
 const { $ } = require("@wdio/globals");
-import Page from "./page";
+import Page from "./basePage";
+const NavBar = require("../components/common/navigationBar.component");
 
 
 class RegisterPage extends Page {
+  constructor() {
+    super('/#/register');
+    this.navBar = new NavBar();
+  }
 
   get inputUserName() {
     return $(`//*[@type="text"]`);
@@ -27,10 +32,6 @@ class RegisterPage extends Page {
   async clickOnSignUpBtn() {
     await super.waitForElementAndClick(this.signUpBtn);
   }
-
-  open() {
-    return super.open("register");
-  }
 }
 
-export default new RegisterPage();
+module.exports = RegisterPage;

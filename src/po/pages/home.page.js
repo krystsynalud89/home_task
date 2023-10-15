@@ -1,8 +1,14 @@
 const { $ } = require("@wdio/globals");
-const Page = require("./page");
+const Page = require("./basePage");
+const NavBar = require("../components/common/navigationBar.component");
 
 
 class HomePage extends Page {
+  constructor() {
+    super('');
+    this.navBar = new NavBar();
+  }
+
   get banner() {
     return $(`//*[@class="banner"]`);
   }
@@ -11,13 +17,9 @@ class HomePage extends Page {
     return $(`//*[@class="sidebar"]`);
   }
 
-  get navigationBar() {
+  get globalFeedTab() {
     return $(`//*[@class="feed-toggle"]//a[@class="nav-link active"]`);
-  }
-
-  open() {
-    return super.open("");
   }
 }
 
-export default new HomePage();
+module.exports = HomePage;

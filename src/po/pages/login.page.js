@@ -1,8 +1,14 @@
 const { $ } = require("@wdio/globals");
-const Page = require("./page");
+const Page = require("./basePage");
+const NavBar = require("../components/common/navigationBar.component");
 
 
 class LoginPage extends Page {
+  constructor() {
+    super('/#/login');
+    this.navBar = new NavBar();
+  }
+
   get header() {
     return $(`h1`);
   }
@@ -22,10 +28,6 @@ class LoginPage extends Page {
   get logInBtn() {
     return $(`//*[@type="submit"]`);
   }
-
-  open() {
-    return super.open("login");
-  }
 }
 
-export default new LoginPage();
+module.exports = LoginPage;
