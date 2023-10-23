@@ -1,3 +1,5 @@
+import { waitForElementAndClickByScript } from '../../test/helpers/wait';
+
 const BasePage = require('../pages/basePage');
 
 const {pages} = require('../index');
@@ -10,7 +12,7 @@ class RegisterPageSteps extends BasePage {
     }
 
     async clickSignUpButton() {
-        await pages('registerPage').signUpBtn.click();
+        await waitForElementAndClickByScript(await pages('registerPage').signUpBtn)
     }
 
     async submit(userName, email, password) {

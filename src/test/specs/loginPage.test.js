@@ -1,4 +1,5 @@
 import {expect} from "chai";
+import { waitForElement } from "../helpers/wait";
 const {pages} = require('../../po');
 const {browser} = require("@wdio/globals");
 
@@ -20,6 +21,7 @@ describe("Login page elements validation", () => {
 
     it('check login with valid credentials', async () => {
         await browser.login('krystsinalud989@gmail.com', 'Testpassword123')
+        await waitForElement(await pages('loginPage').navBar.item('currentUser'));
         expect(await pages('loginPage').navBar.item('currentUser').isDisplayed()).to.be.true;
     }); 
 });

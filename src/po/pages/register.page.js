@@ -22,7 +22,7 @@ class RegisterPage extends Page {
   }
 
   get signUpBtn() {
-    return $(`//*[@type="submit"]`);
+    return $(`[type="submit"]`);
   }
 
   get errorMessage() {

@@ -18,6 +18,15 @@ class BasePage {
         await waitForElement(elem);
         await elem.click();
     }
+
+    async moveTo(elem) {
+        await elem.moveTo();
+    }
+
+    async waitForElementAndGetText(elem) {
+        await waitForElement(elem);
+        return elem.getText();
+    }
 }
 
 module.exports = BasePage;
