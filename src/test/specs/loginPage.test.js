@@ -1,5 +1,6 @@
 import {expect} from "chai";
 const {pages} = require('../../po');
+const {browser} = require("@wdio/globals");
 
 describe("Login page elements validation", () => {
     it(`elements "header", "inputEmail", "inputPassword","logInBtn","needAccount" should be present on the loginPage`, async () => {
@@ -18,14 +19,7 @@ describe("Login page elements validation", () => {
     });
 
     it('check login with valid credentials', async () => {
-        await pages('loginPage').submit('krystsinalud989@gmail.com', 'Testpassword123');
+        await browser.login('krystsinalud989@gmail.com', 'Testpassword123')
         expect(await pages('loginPage').navBar.item('currentUser').isDisplayed()).to.be.true;
-    });
-
-    // to do implement "addCommand"
-    // it.only('check login with valid credentials', async () => {
-    //     await browser.login('krystsinalud989@gmail.com', 'Testpassword123')
-    //     await browser.pause(20000)
-    //     expect(await pages('loginPage').navBar.item('signUp').isDisplayed()).to.be.true;
-    // }); 
+    }); 
 });

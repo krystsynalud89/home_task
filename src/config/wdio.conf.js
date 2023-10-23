@@ -1,3 +1,5 @@
+const {pages} = require('../po');
+
 exports.config = {
     //
     // ====================
@@ -185,8 +187,12 @@ exports.config = {
      * @param {Array.<String>} specs        List of spec file paths that are to be run
      * @param {object}         browser      instance of created browser/device session
      */
-    // before: function (capabilities, specs) {
-    // },
+    before: function () {
+        browser.addCommand('login', async function (email, password) {
+            await pages('loginPage').fillForm(email, password);
+            await pages('loginPage').clickLogInBtnButton();
+        });
+      },
     /**
      * Runs before a WebdriverIO command gets executed.
      * @param {string} commandName hook command name
