@@ -28,6 +28,20 @@ class LoginPage extends Page {
   get logInBtn() {
     return $(`//*[@type="submit"]`);
   }
+
+  async fillForm(email, password) {
+    await this.inputEmail.addValue(email);
+    await this.inputPassword.addValue(password);
+  }
+
+  async clickLogInBtnButton() {
+    await this.logInBtn.click();
+  }
+
+  async submit(email, password) {
+    await this.fillForm(email, password);
+    await this.clickLogInBtnButton();
+  }
 }
 
 module.exports = LoginPage;

@@ -16,4 +16,16 @@ describe("Login page elements validation", () => {
         expect(await pages('loginPage').navBar.item('signIn').isDisplayed()).to.be.true;
         expect(await pages('loginPage').navBar.item('signUp').isDisplayed()).to.be.true;
     });
+
+    it('check login with valid credentials', async () => {
+        await pages('loginPage').submit('krystsinalud989@gmail.com', 'Testpassword123');
+        expect(await pages('loginPage').navBar.item('currentUser').isDisplayed()).to.be.true;
+    });
+
+    // to do implement "addCommand"
+    // it.only('check login with valid credentials', async () => {
+    //     await browser.login('krystsinalud989@gmail.com', 'Testpassword123')
+    //     await browser.pause(20000)
+    //     expect(await pages('loginPage').navBar.item('signUp').isDisplayed()).to.be.true;
+    // }); 
 });
